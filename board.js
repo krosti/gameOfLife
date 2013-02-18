@@ -1,6 +1,5 @@
 "use strict";
 
-// Natural modulus
 function mod(a, m) {
   var k = a % m;
   return k >= 0 ? k : k + m;
@@ -38,9 +37,18 @@ Board.prototype.get = function(x, y) {
 
 Board.prototype.set = function(x, y, val) {
   var normalizedX = mod(x, this.width),
-      normalizedY = mod(y, this.height);
+      normalizedY = mod(y, this.height),
+      piece;
 
   this.state[normalizedX + normalizedY * this.width] = val ? 1 : 0;
+}
+
+Board.prototype.reset = function(){
+  for (var i = this.state.length - 1; i >= 0; i--) {
+    if( this.state[i] === 1 ) var a = i;
+    console.log(a);
+    this.state[a] = 0;
+  };
 }
 
 Board.prototype.neighbours = function(x, y) {

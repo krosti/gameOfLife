@@ -37,3 +37,7 @@ Game.prototype.step = function() {
     }
   }
 };
+
+Game.prototype.reset = function(){
+  this.board.reset();
+}

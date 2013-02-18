@@ -11,10 +11,10 @@ require(['game','board','microevent'], function(game, board, microevent){
       var i,j;    
       
       ctx.fillStyle = '#000'; // Sets the fill color
-      ctx.shadowOffsetX = 2; // Sets the shadow offset x, positive number is right
-      ctx.shadowOffsetY = 2; // Sets the shadow offset y, positive number is down
+      ctx.shadowOffsetX = 1; // Sets the shadow offset x, positive number is right
+      ctx.shadowOffsetY = 1; // Sets the shadow offset y, positive number is down
       ctx.shadowBlur = 4; // Sets the shadow blur size
-      ctx.shadowColor = 'rgba(1, 1, 1, 0.6)'; 
+      ctx.shadowColor = 'rgba(255, 255, 255, 0.6)'; 
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       for (i = 0; i < game.width; i++) {
         for (j = 0; j < game.height; j++) {
@@ -29,6 +29,11 @@ require(['game','board','microevent'], function(game, board, microevent){
           }
         }
       }
+    }
+
+    this.clean = function(){
+      game.reset();
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
     
     canvas.addEventListener("click", function(e) {
@@ -71,6 +76,7 @@ require(['game','board','microevent'], function(game, board, microevent){
       canvas = document.getElementById('world'),
       gameCanvas = new GameCanvas(canvas, game),
       start = document.getElementById('startBtn'),
+      resetCanvas = document.getElementById('resetBtn'),
       simulationStart = document.getElementById('automatic'),
       simulationStop = document.getElementById('automatic-stop'),
       generation = document.getElementById('instances'),
@@ -98,9 +104,12 @@ require(['game','board','microevent'], function(game, board, microevent){
 
   simulationStop.addEventListener('click',function(){
     if (timer){
-      console.log('adf');
       clearInterval(timer);
       timer = null;
     }
+  });
+
+  resetCanvas.addEventListener('click',function(){
+    gameCanvas.clean();
   });
 });
