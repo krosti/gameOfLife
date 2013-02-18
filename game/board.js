@@ -45,9 +45,7 @@ Board.prototype.set = function(x, y, val) {
 
 Board.prototype.reset = function(){
   for (var i = this.state.length - 1; i >= 0; i--) {
-    if( this.state[i] === 1 ) var a = i;
-    console.log(a);
-    this.state[a] = 0;
+    if( this.state[i] === 1 ) this.state[a] = 0;
   };
 }
 
