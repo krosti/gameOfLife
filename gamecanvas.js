@@ -1,5 +1,6 @@
 require(['game','board','microevent'], function(game, board, microevent){
   console.log('Game loaded');
+
   var GameCanvas = function(canvas, game) {
     var self = this,
       ctx = canvas.getContext('2d'),
@@ -71,7 +72,7 @@ require(['game','board','microevent'], function(game, board, microevent){
     y -= gCanvasElement.offsetTop;
   }
 
-  var board = new Board(15,12),
+  var board = new Board(prompt("X:",15), prompt("Y:",12) ),
       game = new Game(board),
       canvas = document.getElementById('world'),
       gameCanvas = new GameCanvas(canvas, game),
