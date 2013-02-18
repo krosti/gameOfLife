@@ -1,12 +1,12 @@
 console.log('Config Loaded');
 require.config({
-      deps: ["gamecanvas"],
+      deps: ['gamecanvas'],
 
       paths: {
-        board       :'board',
-        game        :'game',
-        microevent  :'microevent',
-        gamecanvas  :'gamecanvas'
+        board       :'game/board',
+        game        :'game/game',
+        gamecanvas  :'game/gamecanvas',
+        microevent  :'vendors/microevent'
       },
 
       shim:{
